@@ -1204,6 +1204,7 @@ demo.lvl4Boss.prototype = {
         if(bigHat0Health <= 0){
             boss_hat0.children[0].body.x = -300;
             boss_hat0.children[0].kill();
+            hatText0.kill();
             //headText.kill();
         }
     },
@@ -1216,6 +1217,7 @@ demo.lvl4Boss.prototype = {
         if(bigHat1Health <= 0){
             boss_hat1.children[0].body.x = -300;
             boss_hat1.children[0].kill();
+            hatText1.kill();
             //headText.kill();
         }
     },
@@ -1228,6 +1230,7 @@ demo.lvl4Boss.prototype = {
         if(bigHat2Health <= 0){
             boss_hat2.children[0].body.x = -300;
             boss_hat2.children[0].kill();
+            hatText2.kill();
             //headText.kill();
         }
     },
@@ -1240,6 +1243,7 @@ demo.lvl4Boss.prototype = {
         if(bigHat3Health <= 0){
             boss_hat3.children[0].body.x = -300;
             boss_hat3.children[0].kill();
+            hatText3.kill();
             //headText.kill();
         }
     },
@@ -1252,6 +1256,7 @@ demo.lvl4Boss.prototype = {
         if(bigHat4Health <= 0){
             boss_hat4.children[0].body.x = -300;
             boss_hat4.children[0].kill();
+            hatText4.kill();
             //headText.kill();
         }
     },

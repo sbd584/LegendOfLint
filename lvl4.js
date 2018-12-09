@@ -98,7 +98,7 @@ demo.lvl4 = {
       roidMed.body.immovable = true;
       moveRMed = rightRoids.create(6600, game.world.height - 300, 'medRoid');
       moveRMed.body.immovable = true;
-      roidMed = roids.create(8300, 300, 'medRoid');
+      roidMed = roids.create(8100, 300, 'medRoid');
       roidMed.body.immovable = true;
       //Small
       roidSmall = roids.create(150, game.world.height - 100, 'smallRoid');
@@ -152,7 +152,7 @@ demo.lvl4 = {
       var hat12 = bCap.create(6200, 0, 'hat2');
       var hat13 = topHat.create(7400, game.world.height - 250, 'hat1');
       var hat14 = bCap.create(7550, game.world.height - 250, 'hat2');
-      var hat15 = topHat.create(8400, 0, 'hat1');
+      var hat15 = topHat.create(8200, 0, 'hat1');
       // Gravity
       hat1.body.gravity.y = 100;
       hat2.body.gravity.y = 100;
