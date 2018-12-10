@@ -30,7 +30,11 @@ demo.lvl1Boss = {
       game.load.spritesheet('bossstand', 'lintAssets/level1/boss_pants_stand.png', 235, 355);
       game.load.spritesheet('boss', 'lintAssets/level1/boss_pants_left.png', 283, 355);
       game.load.audio('kyle','lintAssets/kyleDev.mp3');
-      game.load.audio('blaster', 'lintAssets/blaster.mp3');
+      game.load.audio('jump', 'Audio/Jump_00.mp3');
+      game.load.audio('throw', 'Audio/Shoot_01.mp3');
+      game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+      game.load.audio('whoop', 'Audio/round_end.wav');
+      game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
       game.load.audio('explosion', 'lintAssets/explosion.mp3');
 
   },
@@ -402,11 +406,13 @@ demo.lvl1Boss = {
     if (cursors.up.isDown && player.body.touching.down && hithousing) //  && housing.body.touching.up)
     {
         player.body.velocity.y = -700;
+        music = game.sound.play('jump');
     }
     // Fence Hit Reaction
     if (cursors.up.isDown && player.body.touching.down && hitFence)
     {
         player.body.velocity.y = -700;
+        music = game.sound.play('jump');
     }
     else if (cursors.down.isDown) //drop faster
     {
@@ -440,7 +446,8 @@ demo.lvl1Boss = {
 
 
     // cue death scene when all lives are lost
-    if(health_frame == 3){
+    if(health_frame == 6){
+      music = game.sound.play('ded');
       console.log("hello")
       game.state.start('outro');
       health_frame = 0;
@@ -490,10 +497,12 @@ demo.lvl1Boss = {
             star1.lifespan = 750; //how long bullet lasts
             if (playerDirection == -1){
                 star1.reset(player.x-20, player.y+50);
+                music = game.sound.play('throw');
                 star1.body.velocity.x = -600; //left bullet speed
             }
             if (playerDirection == 1){
                 star1.reset(player.x+60, player.y+50);
+                music = game.sound.play('throw');
                 star1.body.velocity.x = 600; //left bullet speed
             }
             console.log("Red Pants");
@@ -503,10 +512,12 @@ demo.lvl1Boss = {
             star2.lifespan = 750; //how long bullet lasts
             if (playerDirection == -1){
                 star2.reset(player.x-20, player.y+50);
+                music = game.sound.play('throw');
                 star2.body.velocity.x = -600; //left bullet speed
             }
             if (playerDirection == 1){
                 star2.reset(player.x+60, player.y+50);
+                music = game.sound.play('throw');
                 star2.body.velocity.x = 600; //left bullet speed
             }
             console.log("Brown Pants");
@@ -516,10 +527,12 @@ demo.lvl1Boss = {
             star3.lifespan = 750; //how long bullet lasts
             if (playerDirection == -1){
                 star3.reset(player.x-20, player.y+50);
+                music = game.sound.play('throw');
                 star3.body.velocity.x = -600; //left bullet speed
             }
             if (playerDirection == 1){
                 star3.reset(player.x+60, player.y+50);
+                music = game.sound.play('throw');
                 star3.body.velocity.x = 600; //left bullet speed
             }
             console.log("White Pants");
@@ -555,6 +568,7 @@ demo.lvl1Boss = {
     },
 
     hitShorts: function(player, shorts){
+        music = game.sound.play('whoop');
         shorts.kill();
         game.state.start('pantsPower');
     },
@@ -596,6 +610,7 @@ demo.lvl1Boss = {
   },
   collectHealth: function(player, item){
   // pants is gone
+      music = game.sound.play('pickup');
       item.kill();
 
       // update meter

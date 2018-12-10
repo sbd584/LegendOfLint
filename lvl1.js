@@ -27,7 +27,8 @@ demo.lvl1 = {
       game.load.spritesheet('lives', 'lintAssets/lives_spritesheet.png', 275, 75);
       game.load.spritesheet('meter', 'lintAssets/level1/meter_sheet_lvl1.png', 400, 100);
       game.load.audio('kyle','lintAssets/kyleDev.mp3');
-      game.load.audio('blaster', 'lintAssets/blaster.mp3');
+      game.load.audio('jump', 'Audio/Jump_00.mp3');
+      game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
       game.load.audio('explosion', 'lintAssets/explosion.mp3');
 
   },
@@ -268,24 +269,28 @@ demo.lvl1 = {
     if (cursors.up.isDown && player.body.touching.down && hitPlatform)
     {
         player.body.velocity.y = -700;
+        music = game.sound.play('jump');
     }
       
     // Fence Hit Reaction
     if (cursors.up.isDown && player.body.touching.down && hitFence)
     {
         player.body.velocity.y = -700;
+        music = game.sound.play('jump');
     }
     
     // Mailbox Hit Reaction
     if (cursors.up.isDown && player.body.touching.down && hitMail)
     {
         player.body.velocity.y = -800;
+        music = game.sound.play('jump');
     }
 
     // housing Hit Reaction
     if (cursors.up.isDown && player.body.touching.down && hithousing) //  && housing.body.touching.up)
     {
         player.body.velocity.y = -700;
+        music = game.sound.play('jump');
     }
     else if (cursors.down.isDown) //drop faster
     {
@@ -368,6 +373,7 @@ demo.lvl1 = {
 
   collectAttractiveness: function(player, item){
   // pants is gone
+      music = game.sound.play('pickup');
       item.kill();
 
       // update meter
