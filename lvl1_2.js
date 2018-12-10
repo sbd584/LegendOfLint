@@ -360,6 +360,7 @@ demo.lvl1_2 = {
     if(meter_frame == 3){
         if(player.x >= 2200){
             health_frame = 0;
+            player.body.velocity.x = 0;
             game.state.start('lvl1Boss');
         }
     }

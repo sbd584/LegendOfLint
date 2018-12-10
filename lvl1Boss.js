@@ -262,6 +262,9 @@ demo.lvl1Boss = {
             game.input.enabled = true;
         })
     }
+    if(msg6.visible == true || msg7.visible == true){
+      player.body.velocity.x = 0;
+    }
 
     if (fight){
         this.BossCreate();
