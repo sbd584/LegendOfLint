@@ -89,44 +89,42 @@ demo.getTheGirl.prototype = {
       var houseShort = housing.create(650, game.world.height - 555, 'house1');
       houseShort.body.immovable = true;
 
-      //arrow
-      arrow = game.add.sprite(200, game.height - 190, 'arrow');
+
 
       //Tutorial
-      msg1 = game.add.sprite(500, 400, 'linen_dialog1');
+      msg1 = game.add.sprite(25, 25, 'linen_dialog1');
       msg1.visible = false;
-      msg1.scale.setTo(.5,.5);
       msg1.fixedToCamera = true;
-      msg2 = game.add.sprite(500, 400, 'linen_dialog3');
+      msg2 = game.add.sprite(25, 25, 'linen_dialog3');
       msg2.visible = false;
-      msg2.scale.setTo(.5,.5);
+      //msg2.scale.setTo(.5,.5);
       msg2.fixedToCamera = true;
-      msg3 = game.add.sprite(500, 400, 'linen_dialog5');
+      msg3 = game.add.sprite(25, 25, 'linen_dialog5');
       msg3.visible = false;
-      msg3.scale.setTo(.5,.5);
+      //msg3.scale.setTo(.5,.5);
       msg3.fixedToCamera = true;
-      msg4 = game.add.sprite(500, 400, 'linen_dialog6');
+      msg4 = game.add.sprite(25, 25, 'linen_dialog6');
       msg4.visible = false;
-      msg4.scale.setTo(.5,.5);
+      //msg4.scale.setTo(.5,.5);
       msg4.fixedToCamera = true;
-      msg7 = game.add.sprite(100, 400, 'lint_dialog2');
+      msg7 = game.add.sprite(25, 25, 'lint_dialog2');
       msg7.visible = false;
-      msg7.scale.setTo(.5,.5);
+      //msg7.scale.setTo(.5,.5);
       msg7.fixedToCamera = true;
-      msg8 = game.add.sprite(100, 400, 'lint_dialog4');
+      msg8 = game.add.sprite(25, 25, 'lint_dialog4');
       msg8.visible = false;
-      msg8.scale.setTo(.5,.5);
+      //msg8.scale.setTo(.5,.5);
       msg8.fixedToCamera = true;
 
       // Health
-      health1 = game.add.sprite(900, 16, 'lives');
-      health1.frame = 0; // begins at full health
-      health1.fixedToCamera = true; //follows with camera
+      // health1 = game.add.sprite(900, 16, 'lives');
+      // health1.frame = 0; // begins at full health
+      // health1.fixedToCamera = true; //follows with camera
 
       // Attractiveness Meter
-      meter = game.add.sprite(25, 16, 'meter');
-      meter.frame = 0; //begins at empty meter
-      meter.fixedToCamera = true; //follows with camera
+      // meter = game.add.sprite(25, 16, 'meter');
+      // meter.frame = 0; //begins at empty meter
+      // meter.fixedToCamera = true; //follows with camera
 
       // Player
       player = game.add.sprite(50, game.world.height - 600, 'dude');
@@ -138,6 +136,9 @@ demo.getTheGirl.prototype = {
       player.animations.add('left', [7, 6, 5], 8, true);
       //player.animations.add('space',0,0,true);
       game.camera.follow(player);
+
+      //arrow
+      arrow = game.add.sprite(200, game.height - 190, 'arrow');
 
       girly = game.add.sprite(550, game.world.height - 250, 'linen');
 
@@ -188,9 +189,9 @@ demo.getTheGirl.prototype = {
     var hitPlatform = game.physics.arcade.collide(player, platforms);
     var hithousing = game.physics.arcade.collide(player, housing);
 
-    health1.frame = health_frame;
+    //  health1.frame = health_frame;
 
-    meter.frame = meter_frame;
+    // meter.frame = meter_frame;
     // console.log(player.body.x);
     // console.log(player.body.x);
     if (popup == 0 && player.x >= 400){
