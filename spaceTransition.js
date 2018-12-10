@@ -102,6 +102,8 @@ demo.spaceTransition.prototype = {
         player1.body.collideWorldBounds = true;
         player1.animations.add('right', [1, 2, 3, 4], 7, true);
         player1.animations.add('left', [8, 7, 6, 5], 7, true);
+        player1.animations.add('jump_right', [3], 8, true);
+        player1.animations.add('jump_left', [6], 8, true);
 
         playerCrouch = player.create(player.children[0].x, player.children[0].y-50, 'crouch');
         game.physics.arcade.enable(playerCrouch);
@@ -252,6 +254,14 @@ for (var i = 0; i < player.length; i++){
         }
 
         // Jump
+        if(player1.body.velocity.y !== 0 && playerDirection == 1)
+        {
+            player1.animations.play('jump_right');
+        }
+        if(player1.body.velocity.y !== 0 && playerDirection == -1)
+        {
+            player1.animations.play('jump_left');
+        }
         if (cursors.up.isDown && player.children[0].body.touching.down && !crouching)
         {
             player.children[0].body.velocity.y = -700;
