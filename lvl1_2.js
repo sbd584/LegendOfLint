@@ -38,7 +38,7 @@ demo.lvl1_2 = {
       //Music
       //music = game.sound.play('kyle');
 
-      console.log('Level 1_2');
+      // console.log('Level 1_2');
 
       // Game setup
       game.stage.backgroundColor = '#ffffff';
@@ -49,7 +49,7 @@ demo.lvl1_2 = {
       enemyNumber = 7;
 
       popup = 0;
-      
+
       // Set PlayerDirection
       playerDirection = 1;
 
@@ -65,7 +65,7 @@ demo.lvl1_2 = {
       housing2 = game.add.group();
       housing2.enableBody = true;
       housing2.alpha = .2;
-      
+
       var houseTallBackground = housing2.create(960, game.world.height - 475, 'house2');
       houseTallBackground.scale.setTo(.7, .7);
       houseTallBackground.alpha = .6;
@@ -98,11 +98,11 @@ demo.lvl1_2 = {
       msg5 = game.add.sprite(300, 400, 'msg5');
       msg5.visible = false;
       msg5.fixedToCamera = true;
-      
+
       //not attractive pop-up
       warning = game.add.sprite(1800, 100, 'warning');
       warning.visible = false;
-    
+
       //Hearts
       heart = game.add.group();
       heart.enableBody = true;
@@ -208,7 +208,7 @@ demo.lvl1_2 = {
           }
         }
       }, this);
-      
+
       //arrow
       arrow = game.add.sprite(2200, game.height - 190, 'arrow');
 
@@ -235,38 +235,38 @@ demo.lvl1_2 = {
     // handling collision between enemyGroup and player
     for (var i = 0; i < enemyNumber; i++){
       game.physics.arcade.collide(player, enemyGroup.children[i], function(player1, enemy1){
-        console.log('It Works!!');
+        // console.log('It Works!!');
         if(enemy1.body.touching.up && player1.body.touching.down){
           player1.body.velocity.y = -500;
           enemy1.body.velocity.y = 500;
-          console.log('Player Up');
-          console.log("Health Loss");
+          // console.log('Player Up');
+          // console.log("Health Loss");
           this.loseHealth();
         }
         else if(enemy1.body.touching.down && player1.body.touching.up){
           player1.body.velocity.y = 500;
           enemy1.body.velocity.y = -500;
-          console.log('Player Down');
-          console.log("Health Loss");
+          // console.log('Player Down');
+          // console.log("Health Loss");
           this.loseHealth();
         }
         else if(enemy1.body.touching.right && player1.body.touching.left){
           player1.body.velocity.x = 2000;
           enemy1.body.velocity.x = -1000;
-          console.log('Player Left');
-          console.log("Health Loss");
+          // console.log('Player Left');
+          // console.log("Health Loss");
           this.loseHealth();
         }
         else if(enemy1.body.touching.left && player1.body.touching.right){
           player1.body.velocity.x = -2000;
           enemy1.body.velocity.x = 1000;
-          console.log('Player Right');
-          console.log("Health Loss");
+          // console.log('Player Right');
+          // console.log("Health Loss");
           this.loseHealth();
         }
 
         else{
-          console.log("Nothing");
+          // console.log("Nothing");
         }
       }, null, this);
     }
@@ -278,7 +278,7 @@ demo.lvl1_2 = {
     meter.frame = meter_frame;
 
     if (popup == 0 && player.x == 200){
-        console.log('tut');
+        // console.log('tut');
         popup++;
         player.body.velocity.x = 0;
         msg3.visible = true;
@@ -294,7 +294,7 @@ demo.lvl1_2 = {
             msg5.visible = false;
         })
     }
-      
+
     player.body.velocity.x = 0;
     if (cursors.left.isDown)
     {
@@ -365,17 +365,17 @@ demo.lvl1_2 = {
     }
     else{ //if player is not attractive enough
         if(player.x >= 2200){
-            console.log('still ugly')
+            // console.log('still ugly')
             warning.visible = true;
         }
         else if(player.x <= 1800){
             warning.visible = false;
         }
-    }  
-    
+    }
+
     // cue death scene when all lives are lost
     if(health_frame == 6){
-      console.log("hello")
+      // console.log("hello")
       game.state.start('outro');
       health_frame = 0;
       meter_frame = 0;
@@ -420,7 +420,7 @@ demo.lvl1_2 = {
       if(game.time.now > nextFire){
           nextFire = game.time.now + fireRate;
           //sets rate of fire, change fireRate to set speed
-          console.log('firing');
+          // console.log('firing');
           //music = game.sound.play('blaster');
           if(changeBullets == 1){
             var star1 = bullets1.getFirstDead();
@@ -433,7 +433,7 @@ demo.lvl1_2 = {
                 star1.reset(player.x+60, player.y+50);
                 star1.body.velocity.x = 600; //left bullet speed
             }
-            console.log("Red Pants");
+            // console.log("Red Pants");
           }
           else if(changeBullets == 2){
             var star2 = bullets2.getFirstDead();
@@ -446,7 +446,7 @@ demo.lvl1_2 = {
                 star2.reset(player.x+60, player.y+50);
                 star2.body.velocity.x = 600; //left bullet speed
             }
-            console.log("Brown Pants");
+            // console.log("Brown Pants");
           }
           else if(changeBullets == 3){
             var star3 = bullets3.getFirstDead();
@@ -459,7 +459,7 @@ demo.lvl1_2 = {
                 star3.reset(player.x+60, player.y+50);
                 star3.body.velocity.x = 600; //left bullet speed
             }
-            console.log("White Pants");
+            // console.log("White Pants");
           }
 
       }
@@ -467,7 +467,7 @@ demo.lvl1_2 = {
 
   hitEnemy: function(bullets, enemy){
       if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
-        console.log('hit');
+        // console.log('hit');
         enemy.kill();
         enemy.destroy();
         bullets.kill();
@@ -483,17 +483,17 @@ demo.lvl1_2 = {
 
   changeBulletsRed: function(player,item){
     changeBullets = 1;
-    console.log('Red Pants Collected');
+    // console.log('Red Pants Collected');
   },
 
   changeBulletsBrown: function(player,item){
     changeBullets = 2;
-    console.log('Brown Pants Collected');
+    // console.log('Brown Pants Collected');
   },
 
   changeBulletsWhite: function(player,item){
     changeBullets = 3;
-    console.log('White Pants Collected');
+    // console.log('White Pants Collected');
   },
 
   collectAttractiveness: function(player, item){
@@ -508,7 +508,7 @@ demo.lvl1_2 = {
   loseHealth: function(player,item){
       if(health_frame < 6){
         health_frame += 1;
-        console.log('Ay');
+        // console.log('Ay');
       }
   },
   collectHealth: function(player, item){
@@ -518,7 +518,7 @@ demo.lvl1_2 = {
       // update meter
       if(health_frame > 0){
         health_frame -= 1;
-        console.log(':)');
+        // console.log(':)');
       }
   },
 
