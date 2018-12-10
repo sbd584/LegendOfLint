@@ -323,7 +323,7 @@ demo.lvl4 = {
       })
       
       //arrow
-      arrow = game.add.sprite(10680, game.height - 190, 'arrow');
+      arrow = game.add.sprite(10720, game.height - 190, 'arrow');
 
       // Pause button
       pausy = game.add.sprite(0, 0, 'pause_button1');
