@@ -235,13 +235,13 @@ demo.lvl1 = {
     player.body.velocity.x = 0;
     if (cursors.left.isDown)
     {
-        player.body.velocity.x = -275;
+        player.body.velocity.x = -350;
         player.animations.play('left');
         playerDirection = -1;
     }
     else if (cursors.right.isDown)
     {
-        player.body.velocity.x = 275;
+        player.body.velocity.x = 350;
         player.animations.play('right');
         playerDirection = 1;
     }
