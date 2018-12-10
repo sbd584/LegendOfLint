@@ -150,6 +150,8 @@ demo.lvl1Boss = {
       player.body.collideWorldBounds = true;
       player.animations.add('right', [1, 2, 3, 4], 8, true);
       player.animations.add('left', [7, 6, 5], 8, true);
+      player.animations.add('jump_right', [3], 8, true);
+      player.animations.add('jump_left', [6], 8, true);
       //player.animations.add('space',0,0,true);
       game.camera.follow(player);
       player.body.velocity.x = 0;
@@ -383,6 +385,14 @@ demo.lvl1Boss = {
     }
 
     // Platform Hit Reaction
+    if(player.body.velocity.y !== 0 && playerDirection == 1)
+    {
+        player.animations.play('jump_right');
+    }
+      if(player.body.velocity.y !== 0 && playerDirection == -1)
+    {
+        player.animations.play('jump_left');
+    }
     if (cursors.up.isDown && player.body.touching.down && hitPlatform)
     {
         player.body.velocity.y = -700;
