@@ -35,7 +35,7 @@ demo.lvl4Boss.prototype = {
 
        create: function() {
 
-        console.log('lvl4Boss');
+        // // console.log('lvl4Boss');
         //Game setup
         game.stage.backgroundColor = '#ffffff';
         game.world.setBounds(0, 0, 1200, 800);
@@ -401,7 +401,7 @@ demo.lvl4Boss.prototype = {
 
         for (var i = 0; i < boss_head.length; i++){
           game.physics.arcade.collide(player.children[i], boss_head.children[i], function(playerChild,bigFootChild){
-            console.log('It Works!!');
+            // // console.log('It Works!!');
             if(bigFootChild.body.touching.up && playerChild.body.touching.down){
               if (crouching){
                   player.children[1].body.velocity.y = -500;
@@ -411,8 +411,8 @@ demo.lvl4Boss.prototype = {
               }
               boss_head.children[0].body.velocity.y = 4000;
               boss_head.children[1].body.velocity.y = 4000;
-              console.log('Player Up');
-              console.log("Health Loss");
+              // // console.log('Player Up');
+              // // console.log("Health Loss");
               this.loseHealth();
             }
             else if(bigFootChild.body.touching.down && playerChild.body.touching.up){
@@ -424,8 +424,8 @@ demo.lvl4Boss.prototype = {
               }
               boss_head.children[0].body.velocity.y = -4000;
               boss_head.children[1].body.velocity.y = -4000;
-              console.log('Player Down');
-              console.log("Health Loss");
+              // // console.log('Player Down');
+              // // console.log("Health Loss");
               this.loseHealth();
             }
             else if(bigFootChild.body.touching.right && playerChild.body.touching.left){
@@ -437,8 +437,8 @@ demo.lvl4Boss.prototype = {
               }
               boss_head.children[0].body.velocity.x = -3000;
               boss_head.children[1].body.velocity.x = -3000;
-              console.log('Player Left');
-              console.log("Health Loss");
+              // // console.log('Player Left');
+              // // console.log("Health Loss");
               this.loseHealth();
             }
             else if(bigFootChild.body.touching.left && playerChild.body.touching.right){
@@ -450,19 +450,19 @@ demo.lvl4Boss.prototype = {
               }
               boss_head.children[0].body.velocity.x = 3000;
               boss_head.children[1].body.velocity.x = 3000;
-              console.log('Player Right');
-              console.log("Health Loss");
+              // // console.log('Player Right');
+              // // console.log("Health Loss");
               this.loseHealth();
             }
             else{
-              console.log("Nothing");
+              // // console.log("Nothing");
             }
           }, null, this);
         }
 
         for (var i = 0; i < boss_head.length; i++){
           game.physics.arcade.collide(player.children[i], boss_hat0.children[i], function(playerChild,bigFootChild){
-            console.log('It Works!!');
+            // // console.log('It Works!!');
             if(bigFootChild.body.touching.up && playerChild.body.touching.down){
               if (crouching){
                   player.children[1].body.velocity.y = -500;
@@ -491,7 +491,7 @@ demo.lvl4Boss.prototype = {
                   player.children[0].body.velocity.x = 2000;
               }
               boss_hat0.children[0].body.x -= 150;
-              console.log('Player Left');
+              // // console.log('Player Left');
               this.loseHealth();
             }
             else if(bigFootChild.body.touching.left && playerChild.body.touching.right){
@@ -502,18 +502,18 @@ demo.lvl4Boss.prototype = {
                   player.children[0].body.velocity.x = -2000;
               }
               boss_hat0.children[0].body.x += 150;
-              console.log('Player Right');
+              // // console.log('Player Right');
               this.loseHealth();
             }
             else{
-              console.log("Nothing");
+              // // console.log("Nothing");
             }
           }, null, this);
         }
 
         for (var i = 0; i < boss_head.length; i++){
           game.physics.arcade.collide(player.children[i], boss_hat1.children[i], function(playerChild,bigFootChild){
-            console.log('It Works!!');
+            // // console.log('It Works!!');
             if(bigFootChild.body.touching.up && playerChild.body.touching.down){
               if (crouching){
                   player.children[1].body.velocity.y = -500;
@@ -555,14 +555,14 @@ demo.lvl4Boss.prototype = {
               this.loseHealth();
             }
             else{
-              console.log("Nothing");
+              // // console.log("Nothing");
             }
           }, null, this);
         }
 
         for (var i = 0; i < boss_head.length; i++){
           game.physics.arcade.collide(player.children[i], boss_hat2.children[i], function(playerChild,bigFootChild){
-            console.log('It Works!!');
+            // // console.log('It Works!!');
             if(bigFootChild.body.touching.up && playerChild.body.touching.down){
               if (crouching){
                   player.children[1].body.velocity.y = -500;
@@ -604,14 +604,14 @@ demo.lvl4Boss.prototype = {
               this.loseHealth();
             }
             else{
-              console.log("Nothing");
+              // // console.log("Nothing");
             }
           }, null, this);
         }
 
         for (var i = 0; i < boss_head.length; i++){
           game.physics.arcade.collide(player.children[i], boss_hat3.children[i], function(playerChild,bigFootChild){
-            console.log('It Works!!');
+            // // console.log('It Works!!');
             if(bigFootChild.body.touching.up && playerChild.body.touching.down){
               if (crouching){
                   player.children[1].body.velocity.y = -500;
@@ -653,14 +653,14 @@ demo.lvl4Boss.prototype = {
               this.loseHealth();
             }
             else{
-              console.log("Nothing");
+              // // console.log("Nothing");
             }
           }, null, this);
         }
 
         for (var i = 0; i < boss_head.length; i++){
           game.physics.arcade.collide(player.children[i], boss_hat4.children[i], function(playerChild,bigFootChild){
-            console.log('It Works!!');
+            // // console.log('It Works!!');
             if(bigFootChild.body.touching.up && playerChild.body.touching.down){
               if (crouching){
                   player.children[1].body.velocity.y = -500;
@@ -702,7 +702,7 @@ demo.lvl4Boss.prototype = {
               this.loseHealth();
             }
             else{
-              console.log("Nothing");
+              // // console.log("Nothing");
             }
           }, null, this);
         }
@@ -897,7 +897,7 @@ demo.lvl4Boss.prototype = {
 
         // cue death scene when all lives are lost
         if(health_frame == 10){
-          console.log("hello")
+          // // console.log("hello")
           game.state.start('outro');
           health_frame = 0;
           meter_frame = 0;
@@ -972,6 +972,9 @@ demo.lvl4Boss.prototype = {
             if (event.keyCode == "4".charCodeAt(0)){
                 game.state.start('lvl4Boss');
             }
+            if (event.keyCode == "5".charCodeAt(0)){
+                game.state.start('hatPowerup');
+            }
         }
 
     },
@@ -986,13 +989,13 @@ demo.lvl4Boss.prototype = {
 
     hatImprovement: function(num,diff){
       if(num == 1){
-        console.log("nummyyyy")
+        // // console.log("nummyyyy")
         var evilHat1 = boss_head.create(boss_head.children[0].body.x - 38, boss_head.children[0].body.y - 30, 'badHat');
         evilHat1.body.collideWorldBounds = true;
         evilHat1.scale.setTo(0.7, 0.7);
         evilHat1.animations.add('yuh', [0,1], 4, true);
         evilHat1.animations.play('yuh');
-        console.log("working!!");
+        // // console.log("working!!");
       }
       else{
         if(diff == 0){
@@ -1001,7 +1004,7 @@ demo.lvl4Boss.prototype = {
           evilHat2.scale.setTo(0.7, 0.7);
           evilHat2.animations.add('yuh', [0,1], 4, true);
           evilHat2.animations.play('yuh');
-          console.log("working!!");
+          // // console.log("working!!");
         }
         else if (diff == 1){
           var evilHat3 = boss_hat1.create(boss_head.children[0].body.x - 38, boss_head.children[0].body.y - 30, 'badHat');
@@ -1009,7 +1012,7 @@ demo.lvl4Boss.prototype = {
           evilHat3.scale.setTo(0.7, 0.7);
           evilHat3.animations.add('yuh', [0,1], 4, true);
           evilHat3.animations.play('yuh');
-          console.log("working!!");
+          // // console.log("working!!");
           hatText1.exists = true;
         }
         else if (diff == 2){
@@ -1018,7 +1021,7 @@ demo.lvl4Boss.prototype = {
           evilHat4.scale.setTo(0.7, 0.7);
           evilHat4.animations.add('yuh', [0,1], 4, true);
           evilHat4.animations.play('yuh');
-          console.log("working!!");
+          // // console.log("working!!");
           hatText2.exists = true;
         }
         else if (diff == 3){
@@ -1027,7 +1030,7 @@ demo.lvl4Boss.prototype = {
           evilHat5.scale.setTo(0.7, 0.7);
           evilHat5.animations.add('yuh', [0,1], 4, true);
           evilHat5.animations.play('yuh');
-          console.log("working!!");
+          // // console.log("working!!");
           hatText3.exists = true;
         }
         else if (diff == 4){
@@ -1036,7 +1039,7 @@ demo.lvl4Boss.prototype = {
           evilHat6.scale.setTo(0.7, 0.7);
           evilHat6.animations.add('yuh', [0,1], 4, true);
           evilHat6.animations.play('yuh');
-          console.log("working!!");
+          // // console.log("working!!");
           hatText4.exists = true;
         }
 
@@ -1048,7 +1051,7 @@ demo.lvl4Boss.prototype = {
         if(game.time.now > nextFire){
             nextFire = game.time.now + fireRate;
             //sets rate of fire, change fireRate to set speed
-            console.log('firing');
+            // // console.log('firing');
             //music = game.sound.play('blaster');
             if(changeBullets == 1){
               var star1 = bullets1.getFirstDead();
@@ -1071,7 +1074,7 @@ demo.lvl4Boss.prototype = {
                   }
                   star1.body.velocity.x = 600; //left bullet speed
               }
-              console.log("RedSock");
+              // // console.log("RedSock");
             }
             else if(changeBullets == 2){
               var star2 = bullets2.getFirstDead();
@@ -1094,7 +1097,7 @@ demo.lvl4Boss.prototype = {
                   }
                   star2.body.velocity.x = 600; //left bullet speed
               }
-              console.log("GreenSock");
+              // // console.log("GreenSock");
             }
             else if(changeBullets == 3){
               var star3 = bullets3.getFirstDead();
@@ -1117,7 +1120,7 @@ demo.lvl4Boss.prototype = {
                   }
                   star3.body.velocity.x = 600; //left bullet speed
               }
-              console.log("GreenSock");
+              // // console.log("GreenSock");
             }
 
         }
@@ -1128,7 +1131,7 @@ demo.lvl4Boss.prototype = {
             if(game.time.now > nextFire2){
                 nextFire2 = game.time.now + fireRate2;
                 //sets rate of fire, change fireRate to set speed
-                console.log('Boss Firing');
+                // // console.log('Boss Firing');
                 //music = game.sound.play('blaster');
                 if(changeBullets == 1){
                   var star4 = bullets4.getFirstDead();
@@ -1154,7 +1157,7 @@ demo.lvl4Boss.prototype = {
 
     hitEnemy: function(bullets, enemy){
         if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
-          console.log('hit');
+          // // console.log('hit');
           enemy.kill();
           enemy.destroy();
           bullets.kill();
@@ -1163,31 +1166,31 @@ demo.lvl4Boss.prototype = {
     },
 
     hitWasherBullets: function(bullet, washerBullet){
-      console.log('bullet collision');
+      // // console.log('bullet collision');
       bullet.kill();
       washerBullet.kill();
     },
 
     hitByBullets: function(player, bullet){
-      console.log('your hit!');
+      // // console.log('your hit!');
       bullet.kill();
       if(health_frame < 10){
         health_frame += 1;
-        console.log('Ay');
+        // // console.log('Ay');
       }
     },
 
     hitBigHead: function(bullet, washerBoss){
-        console.log('Big Wash Down');
+        // // console.log('Big Wash Down');
         bigHeadHealth -= 20;
         headText.text = 'Evil Head: ' + bigHeadHealth;
         bullet.kill();
-        console.log("washer health " +  bigHeadHealth)
+        // // console.log("washer health " +  bigHeadHealth)
         if(bigHeadHealth <= 0){
             boss_head.children[0].body.x = -300;
             boss_head.children[0].kill();
             headText.kill();
-            console.log("WORK!!" +  bigHeadHealth);
+            // // console.log("WORK!!" +  bigHeadHealth);
             var special_shirt1 = special_shirt.create(1100, 0, 'hatPup');
             special_shirt1.scale.setTo(1.2,1.2);
             special_shirt1.body.gravity.y = 300;
@@ -1196,10 +1199,10 @@ demo.lvl4Boss.prototype = {
     },
 
     hitBigHat0: function(bullet,washerBoss){
-        console.log('Big Hat Down');
+        // // console.log('Big Hat Down');
         bigHat0Health -= 20;
         hatText0.text = 'Evil Hat 1: ' + bigHat0Health;
-        console.log("0");
+        // // console.log("0");
         bullet.kill();
         if(bigHat0Health <= 0){
             boss_hat0.children[0].body.x = -300;
@@ -1209,10 +1212,10 @@ demo.lvl4Boss.prototype = {
         }
     },
     hitBigHat1: function(bullet,washerBoss){
-        console.log('Big Hat Down');
+        // // console.log('Big Hat Down');
         bigHat1Health -= 20;
         hatText1.text = 'Evil Hat 2: ' + bigHat1Health;
-        console.log("1");
+        // // console.log("1");
         bullet.kill();
         if(bigHat1Health <= 0){
             boss_hat1.children[0].body.x = -300;
@@ -1222,10 +1225,10 @@ demo.lvl4Boss.prototype = {
         }
     },
     hitBigHat2: function(bullet,washerBoss){
-        console.log('Big Hat Down');
+        // // console.log('Big Hat Down');
         bigHat2Health -= 20;
         hatText2.text = 'Evil Hat 3: ' + bigHat2Health;
-        console.log("2");
+        // // console.log("2");
         bullet.kill();
         if(bigHat2Health <= 0){
             boss_hat2.children[0].body.x = -300;
@@ -1235,10 +1238,10 @@ demo.lvl4Boss.prototype = {
         }
     },
     hitBigHat3: function(bullet,washerBoss){
-        console.log('Big Hat Down');
+        // // console.log('Big Hat Down');
         bigHat3Health -= 20;
         hatText3.text = 'Evil Hat 4: ' + bigHat3Health;
-        console.log("3");
+        // // console.log("3");
         bullet.kill();
         if(bigHat3Health <= 0){
             boss_hat3.children[0].body.x = -300;
@@ -1248,10 +1251,10 @@ demo.lvl4Boss.prototype = {
         }
     },
     hitBigHat4: function(bullet,washerBoss){
-        console.log('Big Hat Down');
+        // // console.log('Big Hat Down');
         bigHat4Health -= 20;
         hatText4.text = 'Evil Hat 5: ' + bigHat4Health;
-        console.log("4");
+        // // console.log("4");
         bullet.kill();
         if(bigHat4Health <= 0){
             boss_hat4.children[0].body.x = -300;
@@ -1264,7 +1267,7 @@ demo.lvl4Boss.prototype = {
     hitSpecialShirt: function(player, special_shirt1){
         special_shirt1.kill();
         // player.body.velocity.y = -10000;
-        game.state.start('shirtPowerup');
+        game.state.start('hatPowerup');
     },
 
     hit: function(s, e){
@@ -1274,17 +1277,17 @@ demo.lvl4Boss.prototype = {
 
     changeBulletsRed: function(player,item){
       changeBullets = 1;
-      console.log('Red Shirt Collected');
+      // // console.log('Red Shirt Collected');
     },
 
     changeBulletsYellow: function(player,ite0m){
       changeBullets = 2;
-      console.log('Yellow Shirt Collected');
+      // // console.log('Yellow Shirt Collected');
     },
 
     changeBulletsPurple: function(player,item){
       changeBullets = 3;
-      console.log('Purple Shirt Collected');
+      // // console.log('Purple Shirt Collected');
     },
 
     collectAttractiveness: function(player, item){
@@ -1300,7 +1303,7 @@ demo.lvl4Boss.prototype = {
     loseHealth: function(player,item){
         if(health_frame < 10){
           health_frame += 1;
-          console.log('Ay');
+          // // console.log('Ay');
         }
     },
     collectHealth: function(player, item){
@@ -1309,7 +1312,7 @@ demo.lvl4Boss.prototype = {
         // update meter
         if(health_frame > 0){
           health_frame -= 1;
-          console.log(':)');
+          // // console.log(':)');
         }
     },
 

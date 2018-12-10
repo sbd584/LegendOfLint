@@ -7,7 +7,7 @@ demo.dbljump.prototype = {
     create: function (){
 
         current_lvl = 0;
-        console.log('double jump');
+        // console.log('double jump');
 
         game.stage.backgroundColor = '#000000';
 

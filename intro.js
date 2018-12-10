@@ -26,7 +26,7 @@ demo.menu.prototype = {
 };
 
 function changeState(i, new_state){
-    console.log(i);
+    // console.log(i);
     game.state.start(new_state);
 };
 
@@ -40,12 +40,12 @@ function addChangeStateEventListeners(){
     }
 
     if (stateName == 'outro'){
-      addKeyCallback(Phaser.Keyboard.ENTER, changeState, new_state);
+      addKeyCallback(Phaser.Keyboard.SPACEBAR, changeState, new_state);
       addKeyCallback(Phaser.Keyboard.DOWN, changeState, 'death2');
     }
 
     if (stateName == 'death2'){
-      addKeyCallback(Phaser.Keyboard.ENTER, changeState, new_state);
+      addKeyCallback(Phaser.Keyboard.SPACEBAR, changeState, new_state);
       addKeyCallback(Phaser.Keyboard.UP, changeState, 'outro');
     }
 

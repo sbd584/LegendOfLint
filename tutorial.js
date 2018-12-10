@@ -21,7 +21,7 @@ demo.tutorial.prototype = {
 
         i = 1;
         current_lvl = 0;
-        console.log('tutorial');
+        // console.log('tutorial');
 
         game.stage.backgroundColor = '#000000';
 
@@ -31,8 +31,8 @@ demo.tutorial.prototype = {
         game.time.events.loop(Phaser.Timer.SECOND * 2, function(){
             nextUp(i);
             i += 1;
-            console.log("next");
-            console.log(i);
+            // console.log("next");
+            // console.log(i);
         })
 
     },
