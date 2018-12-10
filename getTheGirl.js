@@ -251,6 +251,7 @@ demo.getTheGirl.prototype = {
 
     if(player.body.x >= 400){
       player.body.velocity.x = 0;
+      player.body.velocity.y = 0;
       player.animations.stop();
     }
     // console.log(player.body.x);

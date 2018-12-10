@@ -22,7 +22,7 @@ demo.lvl4Boss.prototype = {
         game.load.image('clinetiny3','lintAssets/Level3Platforms/clothesline_tiny3.png');
         game.load.image('special_shirt', 'lintAssets/turtleneck_pup.png');
         game.load.image('pause_button1', 'pause_lvl3.png');
-        game.load.spritesheet('dude', 'lintAssets/Sprites/lint_walk_lvl3.png', 75, 147);
+        game.load.spritesheet('dude', 'lintAssets/Sprites/lint_walk_lvl4.png', 75, 147);
         game.load.spritesheet('crouch', 'lintAssets/Sprites/lint_crouch_lvl3.png', 93, 109);
         game.load.spritesheet('lives', 'lintAssets/level4/health_lvl4.png', 388, 60);
         game.load.spritesheet('meter', 'lintAssets/level4/meter_lvl4.png', 400, 100);
