@@ -98,9 +98,6 @@ demo.lvl1 = {
       var houseTall = housing.create(1900, game.world.height - 650, 'house2');
       houseTall.body.immovable = true;
       
-      //arrow
-      arrow = game.add.sprite(2250, game.height - 190, 'arrow');
-      
       //Tutorial
       msg1 = game.add.sprite(100, 200, 'msg1');
       msg1.visible = false;
@@ -182,6 +179,9 @@ demo.lvl1 = {
 
 
       cursors = game.input.keyboard.createCursorKeys();
+      
+      //arrow
+      arrow = game.add.sprite(2200, game.height - 190, 'arrow');
 
 
       // Pause button

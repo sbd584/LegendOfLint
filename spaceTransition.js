@@ -67,9 +67,9 @@ demo.spaceTransition.prototype = {
 
         // Hearts
         var heart1 = heart.create(100, 4200, 'heart1');
-        var heart2 = heart.create(200, 4200, 'heart1');
-        var heart3 = heart.create(300, 4200, 'heart1');
-        var heart4 = heart.create(400, 4200, 'heart1');
+        var heart2 = heart.create(300, 4200, 'heart1');
+        var heart3 = heart.create(500, 4200, 'heart1');
+        var heart4 = heart.create(700, 4200, 'heart1');
 
         //  Gravity
         heart1.body.gravity.y = 300;
@@ -81,10 +81,6 @@ demo.spaceTransition.prototype = {
         heart2.body.bounce.y = 0.5 + Math.random() * 0.2;
         heart3.body.bounce.y = 0.5 + Math.random() * 0.4;
         heart4.body.bounce.y = 0.5 + Math.random() * 0.3;
-
-        //arrow
-        arrow = game.add.sprite(60, 4670, 'arrow');
-        arrow.scale.setTo(.5, .5);
 
         // Health
         health1 = game.add.sprite(800, 16, 'lives');
@@ -183,6 +179,10 @@ demo.spaceTransition.prototype = {
         bullets6.setAll('scale.y', 1.2);
 
         cursors = game.input.keyboard.createCursorKeys();
+           
+        //arrow
+        arrow = game.add.sprite(60, 4670, 'arrow');
+        arrow.scale.setTo(.5, .5);
 
         // Pause button
         pausy = game.add.sprite(0, 0, 'pause_button1');

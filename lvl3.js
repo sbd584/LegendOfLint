@@ -146,8 +146,6 @@ demo.lvl3.prototype = {
             pole2.children[i].body.checkCollision.left = false;
         }
 
-        //arrow
-        arrow = game.add.sprite(7050, game.height - 190, 'arrow');
         //not attractive pop-up
         warning = game.add.sprite(6500, 300, 'warning');
         warning.visible = false;
@@ -283,6 +281,9 @@ demo.lvl3.prototype = {
             }
           }
         }, this);
+        
+        //arrow
+        arrow = game.add.sprite(2200, game.height - 190, 'arrow');
 
         // Pause button
         pausy = game.add.sprite(0, 0, 'pause_button1');

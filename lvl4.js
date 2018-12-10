@@ -131,8 +131,6 @@ demo.lvl4 = {
           leftRoids.children[i].body.checkCollision.left = false;
       }
 
-      //arrow
-      arrow = game.add.sprite(8800, game.height - 200, 'arrow');
       //not attractive pop-up
       warning = game.add.sprite(8300, 100, 'warning');
       warning.visible = false;
@@ -323,6 +321,9 @@ demo.lvl4 = {
               console.log('left');
           }
       })
+      
+      //arrow
+      arrow = game.add.sprite(2200, game.height - 190, 'arrow');
 
       // Pause button
       pausy = game.add.sprite(0, 0, 'pause_button1');
