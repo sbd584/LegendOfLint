@@ -283,7 +283,7 @@ demo.lvl3.prototype = {
         }, this);
         
         //arrow
-        arrow = game.add.sprite(2200, game.height - 190, 'arrow');
+        arrow = game.add.sprite(7080, game.height - 190, 'arrow');
 
         // Pause button
         pausy = game.add.sprite(0, 0, 'pause_button1');

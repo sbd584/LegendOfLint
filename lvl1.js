@@ -181,7 +181,7 @@ demo.lvl1 = {
       cursors = game.input.keyboard.createCursorKeys();
       
       //arrow
-      arrow = game.add.sprite(2200, game.height - 190, 'arrow');
+      arrow = game.add.sprite(2280, game.height - 190, 'arrow');
 
 
       // Pause button
