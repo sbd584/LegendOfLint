@@ -2,7 +2,7 @@ demo.death = function (){}
 demo.death.prototype = {
     preload: function (){
         game.load.spritesheet('death1', 'lintAssets/death_1.png');
-        game.load.audio('choose', 'Audio/Menu__007.wav');
+        game.load.audio('choose', 'Audio/Menu_Navigate_03.mp3');
     },
     create: function (){
 
