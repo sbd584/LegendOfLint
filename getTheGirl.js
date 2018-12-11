@@ -29,9 +29,7 @@ demo.getTheGirl.prototype = {
       game.load.spritesheet('linen', 'lintAssets/endscene/linen.png');
       game.load.spritesheet('lives', 'lintAssets/lives_spritesheet.png', 275, 75);
       game.load.spritesheet('meter', 'lintAssets/level1/meter_sheet_lvl1.png', 400, 100);
-      game.load.audio('kyle','lintAssets/kyleDev.mp3');
-      game.load.audio('blaster', 'lintAssets/blaster.mp3');
-      game.load.audio('explosion', 'lintAssets/explosion.mp3');
+      game.load.audio('linen', 'Audio/Linen.mp3');
 
   },
 
@@ -42,6 +40,7 @@ demo.getTheGirl.prototype = {
       game.world.setBounds(0,0, 1200, 800);
       //game.scale.scaleMode= Phaser.ScaleManager.RESIZE;
       game.physics.startSystem(Phaser.Physics.ARCADE);
+      music = game.sound.play('linen');
       current_lvl = 1;
       enemyNumber = 3;
       //meter_frame = 4;
@@ -221,6 +220,7 @@ demo.getTheGirl.prototype = {
         })
         game.time.events.add(Phaser.Timer.SECOND*24, function(){
             msg4.visible = false;
+            music.pause();
             game.state.start('end');
         })
 
