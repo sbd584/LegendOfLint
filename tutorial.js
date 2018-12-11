@@ -42,8 +42,6 @@ demo.tutorial.prototype = {
     },
     update: function (){
         
-      game.input.enabled = false;    
-        
       window.onkeydown = function(event) {
         if (event.keyCode == 27){
           game.paused = !game.paused;
