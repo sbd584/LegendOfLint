@@ -43,7 +43,7 @@ demo.lvl1 = {
       game.world.setBounds(0,0, 2400, 800);
       //game.scale.scaleMode= Phaser.ScaleManager.RESIZE;
       game.physics.startSystem(Phaser.Physics.ARCADE);
-      //music = game.sound.play('lvl1_music');
+      lvl_music = game.sound.play('lvl1_music');
       current_lvl = 1;
       enemyNumber = 3;
 

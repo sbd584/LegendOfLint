@@ -572,6 +572,7 @@ demo.lvl1Boss = {
     },
 
     hitShorts: function(player, shorts){
+        lvl_music.pause()
         music = game.sound.play('whoop');
         shorts.kill();
         game.state.start('pantsPower');
@@ -598,7 +599,6 @@ demo.lvl1Boss = {
   },
 
   collectAttractiveness: function(player, item){
-  // pants is gone
       item.kill();
 
       // update meter
@@ -613,7 +613,6 @@ demo.lvl1Boss = {
       }
   },
   collectHealth: function(player, item){
-  // pants is gone
       music = game.sound.play('pickup');
       item.kill();
 
