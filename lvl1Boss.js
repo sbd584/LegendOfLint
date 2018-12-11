@@ -34,6 +34,7 @@ demo.lvl1Boss = {
       game.load.audio('throw', 'Audio/Shoot_01.mp3');
       game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
       game.load.audio('whoop', 'Audio/round_end.wav');
+      game.load.audio('hit', 'Audio/Explosion__003.wav');
       game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
       game.load.audio('explosion', 'lintAssets/explosion.mp3');
 
@@ -544,6 +545,7 @@ demo.lvl1Boss = {
   hitEnemy: function(bullets, enemy){
       if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
         console.log('hit');
+        music = game.sound.play('hit');
         enemy.kill();
         enemy.destroy();
         bullets.kill();
@@ -554,10 +556,12 @@ demo.lvl1Boss = {
 
   hitPantsBoss: function(bullet, boss){
       console.log('hit');
+      music = game.sound.play('hit');
       bossPantsHealth -= 20;
       bossPantsText.text = 'Boss Pants:' + bossPantsHealth;
       bullet.kill();
       if(bossPantsHealth <= 0){
+          music.stop();
           BossPants.children[1].kill();
           bossPantsText.kill();
           var crouchers = shorts.create(1100, 0, 'shorts');

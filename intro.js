@@ -3,7 +3,7 @@ var demo = {}, current_lvl = 0, new_state, pauseButton,
     nextFire = 0, fireRate = 600, BigFoot1, velocity = 1000, attractiveness = 0,
     health = 100, music, bigFootHealth = 300, bigFootText, health1, health_frame = 0,
     meter_frame = 0, stank, footStank, blaster, tween, death_frame, stateName, playerDirection,
-    enemyNumber = 5, special_sock, bFnum = 0, nextFire2 = 900, crouching = false;
+    enemyNumber = 5, special_sock, bFnum = 0, nextFire2 = 900, crouching = false, music;
 
 demo.menu = function (){};
 demo.menu.prototype = {

@@ -28,7 +28,8 @@ demo.lvl1 = {
       game.load.spritesheet('meter', 'lintAssets/level1/meter_sheet_lvl1.png', 400, 100);
       game.load.audio('kyle','lintAssets/kyleDev.mp3');
       game.load.audio('jump', 'Audio/Jump_00.mp3');
-      game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+      game.load.audio('pickup', 'Audio/Collect_Point_00.mp3');
+      game.load.audio('lvl1_music', 'Audio/Turbonugget.mp3');
       game.load.audio('explosion', 'lintAssets/explosion.mp3');
 
   },
@@ -42,6 +43,7 @@ demo.lvl1 = {
       game.world.setBounds(0,0, 2400, 800);
       //game.scale.scaleMode= Phaser.ScaleManager.RESIZE;
       game.physics.startSystem(Phaser.Physics.ARCADE);
+      //music = game.sound.play('lvl1_music');
       current_lvl = 1;
       enemyNumber = 3;
 

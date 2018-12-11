@@ -15,7 +15,8 @@ demo.tutorial.prototype = {
         game.load.image('scene12', 'lintAssets/CutScenes/scene12.png');
         game.load.image('scene13', 'lintAssets/CutScenes/scene13.png');
         game.load.image('scene14', 'lintAssets/CutScenes/scene14.png');
-        game.load.image('tutorial', 'lintAssets/instructions.png');
+        game.load.image('tutorial', 'instructions.png');
+        game.load.audio('linen', 'Audio/Linen.mp3');
     },
     create: function (){
 
@@ -27,6 +28,8 @@ demo.tutorial.prototype = {
 
         game.world.setBounds(0, 0, 1200, 800);
         var scene1 = game.add.sprite(0, 0, 'scene1');
+        
+        music = game.sound.play('linen');
 
         game.time.events.loop(Phaser.Timer.SECOND * 2, function(){
             nextUp(i);
@@ -132,9 +135,13 @@ function nextUp(i){
     }
     else if(i == 19){
       var tutorial = game.add.sprite(0, 0, 'tutorial');
+      music.fadeOut();
+      music.stop();
     }
     else if(i == 20){
       var tutorial = game.add.sprite(0, 0, 'tutorial');
+      music.fadeOut();
+      music.stop();
     }
     else{
       tut();

@@ -32,6 +32,7 @@ demo.lvl1_2 = {
       game.load.audio('jump', 'Audio/Jump_00.mp3');
       game.load.audio('throw', 'Audio/Shoot_01.mp3');
       game.load.audio('pickup', 'Audio/Collect_Point_00.mp3');
+      game.load.audio('hit', 'Audio/Explosion__003.wav');
       game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
       game.load.audio('explosion', 'lintAssets/explosion.mp3');
 
@@ -492,6 +493,7 @@ demo.lvl1_2 = {
   hitEnemy: function(bullets, enemy){
       if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
         // console.log('hit');
+        music = game.sound.play('hit');
         enemy.kill();
         enemy.destroy();
         bullets.kill();
