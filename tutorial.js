@@ -23,11 +23,14 @@ demo.tutorial.prototype = {
         i = 1;
         current_lvl = 0;
         // console.log('tutorial');
+        
+        game.input.enabled = false;
 
         game.stage.backgroundColor = '#000000';
 
         game.world.setBounds(0, 0, 1200, 800);
         var scene1 = game.add.sprite(0, 0, 'scene1');
+        
         
         music = game.sound.play('linen');
 
@@ -40,6 +43,9 @@ demo.tutorial.prototype = {
 
     },
     update: function (){
+        
+      game.input.enabled = false;    
+        
       window.onkeydown = function(event) {
         if (event.keyCode == 27){
           game.paused = !game.paused;
@@ -63,12 +69,12 @@ demo.tutorial.prototype = {
         if (event.keyCode == "4".charCodeAt(0)){
           game.state.start('lvl4');
         }
-        if (event.keyCode == 39){
-            if(i == 14){
-              game.state.start('lvl1')
-            }
-            i = 14;
-        }
+        //if (event.keyCode == 39){
+        //    if(i == 14){
+        //      game.state.start('lvl1')
+        //    }
+        //    i = 14;
+        //}
       }
     }
 }
@@ -78,72 +84,95 @@ function tut(){
 }
 
 function nextUp(i){
+    
+    game.input.enabled = false;
 
     if(i == 1){
+      game.input.enabled = false;
       var scene2 = game.add.sprite(0, 0, 'scene2');
     }
     else if(i == 2){
+      game.input.enabled = false;
       var scene3 = game.add.sprite(0, 0, 'scene3');
     }
     else if(i == 3){
+      game.input.enabled = false;
       var scene4 = game.add.sprite(0, 0, 'scene4');
     }
     else if(i == 4){
+      game.input.enabled = false;
       var scene5 = game.add.sprite(0, 0, 'scene5');
     }
     else if(i == 5){
+      game.input.enabled = false;
       var scene6 = game.add.sprite(0, 0, 'scene6');
     }
     else if(i == 6){
+      game.input.enabled = false;
       var scene7 = game.add.sprite(0, 0, 'scene7');
     }
     else if(i == 7){
+      game.input.enabled = false;
       var scene8 = game.add.sprite(0, 0, 'scene8');
     }
     else if(i == 8){
+      game.input.enabled = false;
       var scene8 = game.add.sprite(0, 0, 'scene8');
     }
     else if(i == 9){
+      game.input.enabled = false;
       var scene9 = game.add.sprite(0, 0, 'scene9');
     }
     else if(i == 10){
+      game.input.enabled = false;
       var scene9 = game.add.sprite(0, 0, 'scene9');
     }
     else if(i == 11){
+      game.input.enabled = false;
       var scene10 = game.add.sprite(0, 0, 'scene10');
     }
     else if(i == 12){
+      game.input.enabled = false;
       var scene10 = game.add.sprite(0, 0, 'scene10');
     }
     else if(i == 13){
+      game.input.enabled = false;
       var scene11 = game.add.sprite(0, 0, 'scene11');
     }
     else if(i == 14){
+      game.input.enabled = false;
       var scene12 = game.add.sprite(0, 0, 'scene12');
     }
     else if(i == 15){
+      game.input.enabled = false;
       var scene12 = game.add.sprite(0, 0, 'scene12');
     }
     else if(i == 16){
+      game.input.enabled = false;
       var scene13 = game.add.sprite(0, 0, 'scene13');
     }
     else if(i == 17){
+      game.input.enabled = false;
       var scene14 = game.add.sprite(0, 0, 'scene14');
     }
     else if(i == 18){
+      game.input.enabled = false;
       var scene14 = game.add.sprite(0, 0, 'scene14');
     }
     else if(i == 19){
+      game.input.enabled = false;
       var tutorial = game.add.sprite(0, 0, 'tutorial');
       music.fadeOut();
       music.stop();
     }
     else if(i == 20){
+      game.input.enabled = false;
       var tutorial = game.add.sprite(0, 0, 'tutorial');
       music.fadeOut();
       music.stop();
     }
     else{
+      game.input.enabled = false;
       tut();
     }
 
