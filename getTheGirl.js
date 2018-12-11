@@ -221,6 +221,7 @@ demo.getTheGirl.prototype = {
         game.time.events.add(Phaser.Timer.SECOND*24, function(){
             msg4.visible = false;
             music.pause();
+            music = game.sound.play('ded');
             game.state.start('end');
         })
 
