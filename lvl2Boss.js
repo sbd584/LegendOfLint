@@ -29,9 +29,13 @@ demo.lvl2Boss.prototype = {
         game.load.spritesheet('crouch', 'lintAssets/Sprites/lint_crouch_lvl2', 93, 109);
         game.load.spritesheet('lives', 'lintAssets/lives_spritesheet.png', 275, 75);
         game.load.spritesheet('meter', 'lintAssets/meter_sheet.png', 400, 100);
-        game.load.audio('kyle','lintAssets/kyleDev.mp3');
-        game.load.audio('blaster', 'lintAssets/blaster.mp3');
-        game.load.audio('explosion', 'lintAssets/explosion.mp3');
+        game.load.audio('lvl2_music','Audio/CoolAsACucumber.mp3');
+        game.load.audio('jump', 'Audio/Jump_00.mp3');
+        game.load.audio('throw', 'Audio/Shoot_01.mp3');
+        game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+        game.load.audio('whoop', 'Audio/round_end.wav');
+        game.load.audio('hit', 'Audio/Explosion__003.wav');
+        game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
 
     },
 
@@ -42,7 +46,7 @@ demo.lvl2Boss.prototype = {
         game.world.setBounds(0,0, 1200, 800);
         //game.scale.scaleMode= Phaser.ScaleManager.RESIZE;
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        current_lvl = "2Boss";
+        current_lvl = 2;
         enemyNumber = 5;
         crouching = false;
 
@@ -171,8 +175,8 @@ demo.lvl2Boss.prototype = {
         game.physics.arcade.enable(player1);
         player1.body.gravity.y = 1000;
         player1.body.collideWorldBounds = true;
-        player1.animations.add('right', [1, 2, 3, 4], 5, true);
-        player1.animations.add('left', [7, 6, 5], 5, true);
+        player1.animations.add('right', [1, 2, 3, 4], 8, true);
+        player1.animations.add('left', [7, 6, 5], 8, true);
         player1.animations.add('jump_right', [3], 8, true);
         player1.animations.add('jump_left', [6], 8, true);
 
@@ -482,6 +486,7 @@ demo.lvl2Boss.prototype = {
         }
         if (cursors.up.isDown && player.children[0].body.touching.down && !crouching)
         {
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -700;
         }
         else if (cursors.down.isDown && !player.children[0].body.touching.down) //drop faster
@@ -523,6 +528,8 @@ demo.lvl2Boss.prototype = {
         // cue death scene when all lives are lost
         if(health_frame == 6){
           console.log("hello")
+          lvl_music.pause();
+          music = game.sound.play('ded');
           game.state.start('outro');
           health_frame = 0;
           meter_frame = 0;
@@ -577,6 +584,7 @@ demo.lvl2Boss.prototype = {
                   else{
                      star1.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -586,6 +594,7 @@ demo.lvl2Boss.prototype = {
                   else{
                      star1.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = 600; //left bullet speed
               }
               console.log("RedSock");
@@ -600,6 +609,7 @@ demo.lvl2Boss.prototype = {
                   else{
                       star2.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -609,6 +619,7 @@ demo.lvl2Boss.prototype = {
                   else{
                       star2.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = 600; //left bullet speed
               }
               console.log("GreenSock");
@@ -620,6 +631,7 @@ demo.lvl2Boss.prototype = {
     hitEnemy: function(bullets, enemy){
         if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
           console.log('hit');
+          music = game.sound.play('hit');
           enemy.kill();
           enemy.destroy();
           bullets.kill();
@@ -629,6 +641,7 @@ demo.lvl2Boss.prototype = {
 
     hitBigFoot: function(bullet,evilFoot){
         console.log('hit');
+        music = game.sound.play('hit');
         bigFootHealth -= 20;
         bigFootText.text = 'Big Foot:' + bigFootHealth;
         bullet.kill();
@@ -644,6 +657,8 @@ demo.lvl2Boss.prototype = {
     },
 
     hitShoes: function(player, special_sock1){
+        lvl_music.pause();
+        music = game.sound.play('whoop');
         special_sock1.kill();
         game.state.start('dbljump');
     },
@@ -665,6 +680,7 @@ demo.lvl2Boss.prototype = {
 
     collectAttractiveness: function(player, item){
     // Sock is gone
+        music = game.sound.play('pickup');
         item.kill();
 
         // update meter
@@ -681,6 +697,7 @@ demo.lvl2Boss.prototype = {
     },
     collectHealth: function(player, item){
     // Sock is gone
+        music = game.sound.play('pickup');
         item.kill();
 
         // update meter

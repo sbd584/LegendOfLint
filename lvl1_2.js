@@ -394,6 +394,7 @@ demo.lvl1_2 = {
     // cue death scene when all lives are lost
     if(health_frame == 6){
       // console.log("hello")
+      lvl_music.pause();
       music = game.sound.play('ded');
       game.state.start('outro');
       health_frame = 0;
