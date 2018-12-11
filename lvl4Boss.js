@@ -29,8 +29,13 @@ demo.lvl4Boss.prototype = {
         game.load.spritesheet('badHat', 'lintAssets/level4/bad_hat.png', 370, 150);
         game.load.spritesheet('evilBro', 'lintAssets/level4/evil_bro.png');
         game.load.spritesheet('hatPup', 'lintAssets/level4/hat_pup.png', 108, 113);
-        game.load.audio('blaster', 'lintAssets/blaster.mp3');
-        game.load.audio('explosion', 'lintAssets/explosion.mp3');
+        game.load.audio('lvl4_music','Audio/Sushi Box.mp3');
+        game.load.audio('jump', 'Audio/Jump_00.mp3');
+        game.load.audio('throw', 'Audio/Shoot_01.mp3');
+        game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+        game.load.audio('whoop', 'Audio/round_end.wav');
+        game.load.audio('hit', 'Audio/Explosion__003.wav');
+        game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
     },
 
        create: function() {
@@ -40,7 +45,7 @@ demo.lvl4Boss.prototype = {
         game.stage.backgroundColor = '#ffffff';
         game.world.setBounds(0, 0, 1200, 800);
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        current_lvl = '4Boss';
+        current_lvl = '4';
         meter_frame = 15;
         enemyNumber = 12;
         a = 0;
@@ -804,6 +809,7 @@ demo.lvl4Boss.prototype = {
         }
         // Jump!
         if (this.jumps > 0 && this.upInputIsActive(5)){
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -720;
             this.jumping = true;
         }
@@ -908,6 +914,8 @@ demo.lvl4Boss.prototype = {
         // cue death scene when all lives are lost
         if(health_frame == 10){
           // // console.log("hello")
+          lvl_music.pause();
+          music = game.sound.play('ded');
           game.state.start('outro');
           health_frame = 0;
           meter_frame = 0;
@@ -1168,6 +1176,7 @@ demo.lvl4Boss.prototype = {
     hitEnemy: function(bullets, enemy){
         if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
           // // console.log('hit');
+          music = game.sound.play('hit');
           enemy.kill();
           enemy.destroy();
           bullets.kill();
@@ -1192,6 +1201,7 @@ demo.lvl4Boss.prototype = {
 
     hitBigHead: function(bullet, washerBoss){
         // // console.log('Big Wash Down');
+        music = game.sound.play('hit');
         bigHeadHealth -= 20;
         headText.text = 'Evil Head: ' + bigHeadHealth;
         bullet.kill();
@@ -1210,6 +1220,7 @@ demo.lvl4Boss.prototype = {
 
     hitBigHat0: function(bullet,washerBoss){
         // // console.log('Big Hat Down');
+        music = game.sound.play('hit');
         bigHat0Health -= 20;
         hatText0.text = 'Evil Hat 1: ' + bigHat0Health;
         // // console.log("0");
@@ -1223,6 +1234,7 @@ demo.lvl4Boss.prototype = {
     },
     hitBigHat1: function(bullet,washerBoss){
         // // console.log('Big Hat Down');
+        music = game.sound.play('hit');
         bigHat1Health -= 20;
         hatText1.text = 'Evil Hat 2: ' + bigHat1Health;
         // // console.log("1");
@@ -1236,6 +1248,7 @@ demo.lvl4Boss.prototype = {
     },
     hitBigHat2: function(bullet,washerBoss){
         // // console.log('Big Hat Down');
+        music = game.sound.play('hit');
         bigHat2Health -= 20;
         hatText2.text = 'Evil Hat 3: ' + bigHat2Health;
         // // console.log("2");
@@ -1249,6 +1262,7 @@ demo.lvl4Boss.prototype = {
     },
     hitBigHat3: function(bullet,washerBoss){
         // // console.log('Big Hat Down');
+        music = game.sound.play('hit');
         bigHat3Health -= 20;
         hatText3.text = 'Evil Hat 4: ' + bigHat3Health;
         // // console.log("3");
@@ -1262,6 +1276,7 @@ demo.lvl4Boss.prototype = {
     },
     hitBigHat4: function(bullet,washerBoss){
         // // console.log('Big Hat Down');
+        music = game.sound.play('hit');
         bigHat4Health -= 20;
         hatText4.text = 'Evil Hat 5: ' + bigHat4Health;
         // // console.log("4");
@@ -1302,6 +1317,7 @@ demo.lvl4Boss.prototype = {
 
     collectAttractiveness: function(player, item){
     // shirt is gone
+        music = game.sound.play('pickup');
         item.kill();
 
         // update meter
@@ -1318,6 +1334,7 @@ demo.lvl4Boss.prototype = {
     },
     collectHealth: function(player, item){
     // Sock is gone
+        music = game.sound.play('pickup');
         item.kill();
         // update meter
         if(health_frame > 0){

@@ -17,9 +17,13 @@ demo.lvl4 = {
       game.load.spritesheet('lives', 'lintAssets/level4/health_lvl4.png', 388, 60);
       game.load.spritesheet('meter', 'lintAssets/level4/meter_lvl4.png', 400, 100);
       game.load.spritesheet('badHat', 'lintAssets/level4/mini_hat.png', 108, 113);
-      game.load.audio('kyle','lintAssets/kyleDev.mp3');
-      game.load.audio('blaster', 'lintAssets/blaster.mp3');
-      game.load.audio('explosion', 'lintAssets/explosion.mp3');
+      game.load.audio('lvl4_music','Audio/Sushi Box.mp3');
+      game.load.audio('jump', 'Audio/Jump_00.mp3');
+      game.load.audio('throw', 'Audio/Shoot_01.mp3');
+      game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+      game.load.audio('whoop', 'Audio/round_end.wav');
+      game.load.audio('hit', 'Audio/Explosion__003.wav');
+      game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
   },
 
   create: function() {
@@ -29,6 +33,7 @@ demo.lvl4 = {
       game.world.setBounds(0,0, 9000, 800);
       //game.scale.scaleMode= Phaser.ScaleManager.RESIZE;
       game.physics.startSystem(Phaser.Physics.ARCADE);
+      lvl_music = game.sound.play('lvl4_music');
       current_lvl = 4;
       meter_frame = 0;
       health_frame = 0;
@@ -466,6 +471,7 @@ demo.lvl4 = {
         }
         // Jump!
         if (this.jumps > 0 && this.upInputIsActive(5)){
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -720;
             this.jumping = true;
         }
@@ -523,6 +529,8 @@ demo.lvl4 = {
       // cue death scene when all lives are lost
       if(health_frame == 10){
         console.log("hello")
+        lvl_music.pause();
+        music = game.sound.play('ded');
         game.state.start('outro');
         health_frame = 0;
         meter_frame = 0;
@@ -587,6 +595,7 @@ demo.lvl4 = {
                   else{
                      star1.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = -600; //left bullet speed
               }
             if (playerDirection == 1){
@@ -596,6 +605,7 @@ demo.lvl4 = {
                   else{
                      star1.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = 600; //left bullet speed
               }
               console.log("TopHat");
@@ -610,6 +620,7 @@ demo.lvl4 = {
                   else{
                       star2.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = -600; //left bullet speed
               }
             if (playerDirection == 1){
@@ -619,6 +630,7 @@ demo.lvl4 = {
                   else{
                       star2.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = 600; //left bullet speed
               }
               console.log("B Cap");
@@ -629,6 +641,7 @@ demo.lvl4 = {
   hitEnemy: function(bullets, enemy){
       if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
         console.log('hit');
+        music = game.sound.play('hit');
         enemy.kill();
         enemy.destroy();
         bullets.kill();
@@ -653,6 +666,7 @@ demo.lvl4 = {
 
   collectAttractiveness: function(player, item){
   // shirt is gone
+      music = game.sound.play('pickup');
       item.kill();
 
       // update meter
@@ -670,6 +684,7 @@ demo.lvl4 = {
 
   collectHealth: function(player, item){
   // Sock is gone
+      music = game.sound.play('pickup');
       item.kill();
 
       // update meter
