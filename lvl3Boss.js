@@ -36,7 +36,6 @@ demo.lvl3Boss.prototype = {
         game.stage.backgroundColor = '#ffffff';
         game.world.setBounds(0, 0, 1200, 800);
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        meter_frame = 15;
         current_lvl = 3;
         enemyNumber = 12;
 
@@ -122,7 +121,7 @@ demo.lvl3Boss.prototype = {
 
         // Attractiveness Meter
         meter = game.add.sprite(25, 16, 'meter');
-        meter.frame = 15; //begins at empty meter
+        meter.frame = 5; //begins at empty meter
         meter.fixedToCamera = true; //follows with camera
         // 7 meter length
 
@@ -371,7 +370,7 @@ demo.lvl3Boss.prototype = {
 
         //menu updates
         health1.frame = health_frame;
-        meter.frame = 15;
+        meter.frame = 5;
 
         var hitPlatform = game.physics.arcade.collide(player, platforms);
         game.physics.arcade.collide(player, platforms);
