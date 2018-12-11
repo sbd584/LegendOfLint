@@ -1290,6 +1290,8 @@ demo.lvl4Boss.prototype = {
     },
 
     hitSpecialShirt: function(player, special_shirt1){
+        lvl_music.pause();
+        music = game.sound.play('whoop');
         special_shirt1.kill();
         // player.body.velocity.y = -10000;
         game.state.start('hatPowerup');
