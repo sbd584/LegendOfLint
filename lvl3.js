@@ -30,9 +30,13 @@ demo.lvl3.prototype = {
         game.load.spritesheet('lives', 'lintAssets/lives_spritesheet.png', 275, 75);
         game.load.spritesheet('meter', 'lintAssets/meter_sheet2.png', 400, 100);
         game.load.spritesheet('badWasher', 'lintAssets/bad_washer.png', 108, 130);
-        game.load.audio('kyle','lintAssets/kyleDev.mp3');
-        game.load.audio('blaster', 'lintAssets/blaster.mp3');
-        game.load.audio('explosion', 'lintAssets/explosion.mp3');
+        game.load.audio('lvl3_music','Audio/TheArtichokeKing.mp3');
+        game.load.audio('jump', 'Audio/Jump_00.mp3');
+        game.load.audio('throw', 'Audio/Shoot_01.mp3');
+        game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+        game.load.audio('whoop', 'Audio/round_end.wav');
+        game.load.audio('hit', 'Audio/Explosion__003.wav');
+        game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
     },
 
     create: function() {
@@ -41,6 +45,7 @@ demo.lvl3.prototype = {
         game.stage.backgroundColor = '#ffffff';
         game.world.setBounds(0,0, 7200, 800);
         game.physics.startSystem(Phaser.Physics.ARCADE);
+        lvl_music = game.sound.play('lvl3_music');
         current_lvl = 3;
         meter_frame = 0;
         health_frame = 0;
@@ -151,8 +156,8 @@ demo.lvl3.prototype = {
         warning.visible = false;
 
         shirt1_x = 300
-        for (var i = 0; i < 6; i++){
-            var shirt1 = shirtRed.create(shirt1_x += 3000 * Math.random(), 0, 'shirt1');
+        for (var i = 0; i < 10; i++){
+            var shirt1 = shirtRed.create(shirt1_x += 2000 * Math.random(), 0, 'shirt1');
             shirt1.body.gravity.y = 300;
             shirt1.body.bounce.y = 0.5 + Math.random() * 0.1;
         }
@@ -398,6 +403,7 @@ demo.lvl3.prototype = {
         }
         if (cursors.up.isDown && player.children[0].body.touching.down && !crouching)
         {
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -700;
         }
         else if (cursors.down.isDown && !player.children[0].body.touching.down) //drop faster
@@ -423,6 +429,7 @@ demo.lvl3.prototype = {
         }
         // Jump!
         if (this.jumps > 0 && this.upInputIsActive(5)){
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -720;
             this.jumping = true;
         }
@@ -476,7 +483,9 @@ demo.lvl3.prototype = {
         // cue death scene when all lives are lost
         if(health_frame == 6){
           console.log("hello")
-          game.state.start('outro');
+          lvl_music.pause()
+          music = game.sound.play('ded');
+          music = game.state.start('outro');
           health_frame = 0;
           meter_frame = 0;
         }
@@ -531,6 +540,7 @@ demo.lvl3.prototype = {
                   else{
                      star1.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -540,6 +550,7 @@ demo.lvl3.prototype = {
                   else{
                      star1.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = 600; //left bullet speed
               }
               console.log("RedSock");
@@ -554,6 +565,7 @@ demo.lvl3.prototype = {
                   else{
                       star2.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -563,6 +575,7 @@ demo.lvl3.prototype = {
                   else{
                       star2.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = 600; //left bullet speed
               }
               console.log("GreenSock");
@@ -577,6 +590,7 @@ demo.lvl3.prototype = {
                   else{
                       star3.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star3.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -586,6 +600,7 @@ demo.lvl3.prototype = {
                   else{
                       star3.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star3.body.velocity.x = 600; //left bullet speed
               }
               console.log("GreenSock");
@@ -597,6 +612,7 @@ demo.lvl3.prototype = {
     hitEnemy: function(bullets, enemy){
         if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
           console.log('hit');
+          music = game.sound.play('hit');
           enemy.kill();
           enemy.destroy();
           bullets.kill();
@@ -626,6 +642,7 @@ demo.lvl3.prototype = {
 
     collectAttractiveness: function(player, item){
     // shirt is gone
+        music = game.sound.play('pickup');
         item.kill();
 
         // update meter
@@ -642,6 +659,7 @@ demo.lvl3.prototype = {
     },
     collectHealth: function(player, item){
     // Sock is gone
+        music = game.sound.play('pickup');
         item.kill();
 
         // update meter

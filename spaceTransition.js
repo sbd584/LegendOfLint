@@ -18,7 +18,13 @@ demo.spaceTransition.prototype = {
         game.load.spritesheet('machine_boss2', 'lintAssets/machine_boss2.png', 230, 240);
         game.load.spritesheet('lives', 'lintAssets/level4/health_lvl4.png', 388, 60);
         game.load.spritesheet('meter', 'lintAssets/meter_sheet.png', 400, 100);
-        game.load.audio('blaster', 'lintAssets/blaster.mp3');
+        game.load.audio('transition_music','Audio/Linen.mp3');
+        game.load.audio('jump', 'Audio/Jump_00.mp3');
+        game.load.audio('throw', 'Audio/Shoot_01.mp3');
+        game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+        game.load.audio('whoop', 'Audio/round_end.wav');
+        game.load.audio('hit', 'Audio/Explosion__003.wav');
+        game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
         game.load.audio('explosion', 'lintAssets/explosion.mp3');
     },
 
@@ -29,6 +35,7 @@ demo.spaceTransition.prototype = {
         game.stage.backgroundColor = '#ffffff';
         game.world.setBounds(0, 0, 1200, 4800);
         game.physics.startSystem(Phaser.Physics.ARCADE);
+        lvl_music = game.sound.play('transition_music');
         current_lvl = 4;
         crouching = false;
 
@@ -67,9 +74,9 @@ demo.spaceTransition.prototype = {
 
         // Hearts
         var heart1 = heart.create(100, 4200, 'heart1');
-        var heart2 = heart.create(300, 4200, 'heart1');
-        var heart3 = heart.create(500, 4200, 'heart1');
-        var heart4 = heart.create(700, 4200, 'heart1');
+        var heart2 = heart.create(400, 4200, 'heart1');
+        var heart3 = heart.create(800, 4200, 'heart1');
+        var heart4 = heart.create(1100, 4200, 'heart1');
 
         //  Gravity
         heart1.body.gravity.y = 300;
@@ -196,7 +203,9 @@ demo.spaceTransition.prototype = {
     update: function() {
 
         for (var i = 0; i < player.length; i++){
-            if(player.children[i].body.x >= 410){
+            if(player.children[i].body.x >= 410 && this.jumping == true){
+                lvl_music.pause();
+                music = game.sound.play('explosion');
                 player.children[i].body.velocity.y = -5000;
             }
 
@@ -264,6 +273,7 @@ for (var i = 0; i < player.length; i++){
         }
         if (cursors.up.isDown && player.children[0].body.touching.down && !crouching)
         {
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -700;
         }
         else if (cursors.down.isDown && !player.children[0].body.touching.down) //drop faster
@@ -289,6 +299,7 @@ for (var i = 0; i < player.length; i++){
         }
         // Jump!
         if (this.jumps > 0 && this.upInputIsActive(5)){
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -720;
             this.jumping = true;
         }
@@ -303,9 +314,9 @@ for (var i = 0; i < player.length; i++){
         }
 
         // set fire button input
-        if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-            this.fire(changeBullets);
-        }
+        // if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+        //    this.fire(changeBullets);
+        // }
 
         //overlap of bullet and enemy
         game.physics.arcade.overlap(player, heart, this.collectHealth);

@@ -9,7 +9,7 @@ demo.lvl3Boss.prototype = {
         game.load.image('shirt3', 'lintAssets/shirt_3.png');
         game.load.image('shirt4', 'lintAssets/bad_shirt.png');
         game.load.image('shirt5', 'lintAssets/bad_shirt2.png');
-        game.load.image('heart', 'lintAssets/heart.png');
+        game.load.image('heart1', 'lintAssets/heart.png');
         game.load.image('clinetall3','lintAssets/Level3Platforms/clothesline_tall3.png');
         game.load.image('clinemed3','lintAssets/Level3Platforms/clothesline_med3.png');
         game.load.image('clinetiny3','lintAssets/Level3Platforms/clothesline_tiny3.png');
@@ -20,8 +20,13 @@ demo.lvl3Boss.prototype = {
         game.load.spritesheet('machine_boss3', 'lintAssets/machine_boss3.png', 230, 240);
         game.load.spritesheet('lives', 'lintAssets/lives_spritesheet.png', 275, 75);
         game.load.spritesheet('meter', 'lintAssets/meter_sheet.png', 400, 100);
-        game.load.audio('blaster', 'lintAssets/blaster.mp3');
-        game.load.audio('explosion', 'lintAssets/explosion.mp3');
+        game.load.audio('lvl3_music','Audio/TheArtichokeKing.mp3');
+        game.load.audio('jump', 'Audio/Jump_00.mp3');
+        game.load.audio('throw', 'Audio/Shoot_01.mp3');
+        game.load.audio('pickup', 'Audio/Collect_Point_00.mp3')
+        game.load.audio('whoop', 'Audio/round_end.wav');
+        game.load.audio('hit', 'Audio/Explosion__003.wav');
+        game.load.audio('ded', 'Audio/Jingle_Lose_00.mp3');
     },
 
        create: function() {
@@ -32,7 +37,7 @@ demo.lvl3Boss.prototype = {
         game.world.setBounds(0, 0, 1200, 800);
         game.physics.startSystem(Phaser.Physics.ARCADE);
         meter_frame = 15;
-        current_lvl = '3Boss';
+        current_lvl = 3;
         enemyNumber = 12;
 
 
@@ -117,7 +122,7 @@ demo.lvl3Boss.prototype = {
 
         // Attractiveness Meter
         meter = game.add.sprite(25, 16, 'meter');
-        meter.frame = 0; //begins at empty meter
+        meter.frame = 15; //begins at empty meter
         meter.fixedToCamera = true; //follows with camera
         // 7 meter length
 
@@ -366,7 +371,7 @@ demo.lvl3Boss.prototype = {
 
         //menu updates
         health1.frame = health_frame;
-        meter.frame = meter_frame;
+        meter.frame = 15;
 
         var hitPlatform = game.physics.arcade.collide(player, platforms);
         game.physics.arcade.collide(player, platforms);
@@ -452,6 +457,7 @@ demo.lvl3Boss.prototype = {
         }
         if (cursors.up.isDown && player.children[0].body.touching.down && !crouching)
         {
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -700;
         }
         else if (cursors.down.isDown && !player.children[0].body.touching.down) //drop faster
@@ -477,6 +483,7 @@ demo.lvl3Boss.prototype = {
         }
         // Jump!
         if (this.jumps > 0 && this.upInputIsActive(5)){
+            music = game.sound.play('jump');
             player.children[0].body.velocity.y = -720;
             this.jumping = true;
         }
@@ -552,6 +559,8 @@ demo.lvl3Boss.prototype = {
         // cue death scene when all lives are lost
         if(health_frame == 6){
           console.log("hello")
+          lvl_music.pause()
+          music = game.sound.play('ded');
           game.state.start('outro');
           health_frame = 0;
           meter_frame = 0;
@@ -608,6 +617,7 @@ demo.lvl3Boss.prototype = {
                   else{
                      star1.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -617,6 +627,7 @@ demo.lvl3Boss.prototype = {
                   else{
                      star1.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star1.body.velocity.x = 600; //left bullet speed
               }
               console.log("RedSock");
@@ -631,6 +642,7 @@ demo.lvl3Boss.prototype = {
                   else{
                       star2.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -640,6 +652,7 @@ demo.lvl3Boss.prototype = {
                   else{
                       star2.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star2.body.velocity.x = 600; //left bullet speed
               }
               console.log("GreenSock");
@@ -654,6 +667,7 @@ demo.lvl3Boss.prototype = {
                   else{
                       star3.reset(player.children[0].x-20, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star3.body.velocity.x = -600; //left bullet speed
               }
               if (playerDirection == 1){
@@ -663,6 +677,7 @@ demo.lvl3Boss.prototype = {
                   else{
                       star3.reset(player.children[0].x+60, player.children[0].y+50);
                   }
+                  music = game.sound.play('throw');
                   star3.body.velocity.x = 600; //left bullet speed
               }
               console.log("GreenSock");
@@ -702,6 +717,7 @@ demo.lvl3Boss.prototype = {
 
     hitEnemy: function(bullets, enemy){
         if(enemy.body.x >= bullets.body.x + 40 || enemy.body.x <= bullets.body.x - 40){
+          music = game.sound.play('hit');
           console.log('hit');
           enemy.kill();
           enemy.destroy();
@@ -712,12 +728,14 @@ demo.lvl3Boss.prototype = {
 
     hitWasherBullets: function(bullet, washerBullet){
       console.log('bullet collision');
+      music = game.sound.play('hit');
       bullet.kill();
       washerBullet.kill();
     },
 
     hitByBullets: function(player, bullet){
       console.log('your hit!');
+      music = game.sound.play('hit');
       bullet.kill();
       if(health_frame < 6){
         health_frame += 1;
@@ -727,6 +745,7 @@ demo.lvl3Boss.prototype = {
 
     hitBigWasher: function(bullet, washerBoss){
         console.log('Big Wash Down');
+        music = game.sound.play('hit');
         washerHealth -= 20;
         washerText.text = 'Evil Washer: ' + washerHealth;
         bullet.kill();
@@ -744,6 +763,8 @@ demo.lvl3Boss.prototype = {
     },
 
     hitSpecialShirt: function(player, special_shirt1){
+        lvl_music.pause()
+        music = game.sound.play('whoop');
         special_shirt1.kill();
         // player.body.velocity.y = -10000;
         game.state.start('shirtPowerup');
@@ -771,6 +792,7 @@ demo.lvl3Boss.prototype = {
 
     collectAttractiveness: function(player, item){
     // shirt is gone
+        music = game.sound.play('pickup');
         item.kill();
 
         // update meter
@@ -787,6 +809,7 @@ demo.lvl3Boss.prototype = {
     },
     collectHealth: function(player, item){
     // Sock is gone
+        music = game.sound.play('pickup');
         item.kill();
         // update meter
         if(health_frame > 0){
